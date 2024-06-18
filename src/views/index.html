@@ -56,9 +56,22 @@
         <label for="film">Sélectionnez un film:</label>
         <select id="film" name="film" required>
             <option value="">--Choisissez un film--</option>
-            <option value="film1">Film 1</option>
-            <option value="film2">Film 2</option>
-            <option value="film3">Film 3</option>
+            <script>
+                fetch('http://localhost:5000/api/movies')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(film => {
+                            console.log("data", data);
+                            const option = document.createElement('option');
+                            option.value = film.id;
+                            option.textContent = film.title;
+                            document.getElementById('film').appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            </script>
         </select>
 
         <label for="date">Sélectionnez la date:</label>
