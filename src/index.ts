@@ -7,13 +7,13 @@ import cors from 'cors';
 const app = express();
 const port = 8888;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.use('/auth', authRoutes);
-app.use(cors());
 
 app.get('/', (_req: Request, res: Response) => {
   res.sendFile(path.resolve(__dirname, '../src/views/index.html'));

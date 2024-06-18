@@ -58,18 +58,35 @@
             <option value="">--Choisissez un film--</option>
             <script>
                 fetch('http://localhost:5000/api/movies')
-                    .then(response => response.json())
+                    .then(response => {
+                        console.log('Response received:', response);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json(); // Get response as JSON
+                    })
                     .then(data => {
-                        data.forEach(film => {
-                            console.log("data", data);
+                        console.log('Response JSON:', data);
+                        const movies = data._embedded.returnedMovies;
+                        for (let i = 0; i < movies.length; i++) {
+                            const movie = movies[i];
+                            const id = movie.id;
+                            const title = movie.title;
+
+                            console.log('Movie:', { id, title });
+
                             const option = document.createElement('option');
-                            option.value = film.id;
-                            option.textContent = film.title;
+                            option.value = id;
+                            option.textContent = title;
                             document.getElementById('film').appendChild(option);
-                        });
+                        }
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        const option = document.createElement('option');
+                        option.value = "";
+                        option.textContent = "Erreur de chargement des films";
+                        document.getElementById('film').appendChild(option);
                     });
             </script>
         </select>
