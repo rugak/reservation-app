@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation de Films</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input, select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Réservation de Films</h1>
+    <form action="" method="post">
+        <label for="film">Sélectionnez un film:</label>
+        <select id="film" name="film" required>
+            <option value="">--Choisissez un film--</option>
+            <option value="film1">Film 1</option>
+            <option value="film2">Film 2</option>
+            <option value="film3">Film 3</option>
+        </select>
+
+        <label for="date">Sélectionnez la date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Sélectionnez l'horaire:</label>
+        <select id="time" name="time" required>
+            <option value="">--Choisissez un horaire--</option>
+            <option value="10:00">10:00</option>
+            <option value="13:00">13:00</option>
+            <option value="16:00">16:00</option>
+            <option value="19:00">19:00</option>
+            <option value="22:00">22:00</option>
+        </select>
+
+        <label for="name">Votre nom:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Votre email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Réserver">
+    </form>
+</div>
+
+</body>
+</html>
